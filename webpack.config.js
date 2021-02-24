@@ -53,12 +53,9 @@ module.exports = {
         },
             {
                 test: /\.(png|jpe?g|gif)$/i,
-                include: './images/',
                 use: [
                     {
                         loader: 'file-loader',
-                        name: '/images/[name].[ext]',
-                        useRelativePath: true
                     },
                 ],
             },
