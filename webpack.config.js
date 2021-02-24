@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const path = require('path');
 const webpack = require('webpack');
 
@@ -43,7 +44,7 @@ module.exports = {
             filename: 'index.html', // название выходного файла
         }),
         new webpack.HotModuleReplacementPlugin(),
-        new ESLintPlugin(options),
+        new ESLintPlugin(),
     ],
 
     module: {
