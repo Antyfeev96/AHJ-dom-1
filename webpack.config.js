@@ -1,5 +1,3 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
 const path = require('path');
 const webpack = require('webpack');
 
@@ -14,6 +12,8 @@ const webpack = require('webpack');
  */
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 
 module.exports = {
@@ -43,6 +43,7 @@ module.exports = {
             filename: 'index.html', // название выходного файла
         }),
         new webpack.HotModuleReplacementPlugin(),
+        new ESLintPlugin(options),
     ],
 
     module: {
@@ -51,6 +52,14 @@ module.exports = {
             include: [path.resolve(__dirname, 'src')],
             loader: 'babel-loader'
         },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'eslint-loader',
+                options: {
+                    // eslint options (if necessary)
+                },
+            },
             {
                 test: /\.(png|jpe?g|gif)$/i,
                 use: [
